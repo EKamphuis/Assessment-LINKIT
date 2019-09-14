@@ -1,6 +1,12 @@
+ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
+hbase shell
+create 'dangerous_driving',{NAME =>'cf'}
+exit
 
 org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator=’,’ -Dimporttsv.columns=’HBASE_ROW_KEY,cf:ename,
 cf:designation,cf:manager,cf:hire_date,cf:sal,cf:deptno’ emp_data /user/bdp/hbase/data/emp_data.csv
 
 wasbs:///tmp/dangerous-driver.cvs
 https://storagetop.blob.core.windows.net/hbase10-2019-09-13t14-41-18-989z/tmp/dangerous-driver.cvs
+
+exit
