@@ -1,1 +1,37 @@
+First created dataframes from every table separate
+
+livy2.spark
+val drivers = spark.table("drivers")
+
+%livy2.spark
+val timesheet = spark.table("timesheet")
+
+%livy2.spark
+val timesheet = spark.table("truck")
+
+Than separatly joined the two tables (drivers and timesheet) to create one table that would show the driverId, name, hours_logged and miles_logged.
+
+%livy2.spark
+val driverstimesheet = spark.sql("SELECT DISTINCT drivers.driverid, name, hours_logged, miles_logged FROM drivers INNER JOIN timesheet ON drivers.driverid = timesheet.driverid")
+driverstimesheet.show()
++--------+-----------------+------------+------------+
+|driverid|             name|hours_logged|miles_logged|
++--------+-----------------+------------+------------+
+|      13|      Joe Niemiec|          51|        2698|
+|      18|        Grant Liu|          53|        2684|
+|      22|    Nadeem Asghar|          57|        2624|
+|      24|      Don Hilborn|          51|        2544|
+|      27|  Mark Lochbihler|          58|        2772|
+|      30|         Dan Rice|          48|        2594|
+|      32|   Ryan Templeton|          58|        2521|
+|      34|     Frank Romano|          59|        2609|
+|      34|     Frank Romano|          49|        2641|
+|      37|        Wes Floyd|          47|        2641|
+|      40| Nicolas Maillard|          58|        2676|
+|      40| Nicolas Maillard|          52|        2799|
+|      41|    Greg Phillips|          60|        2751|
+|      33|Sridhara Sabbella|          55|        2570|
+|      37|        Wes Floyd|          49|        2538|
+|      10|George Vetticaden|          72|        2900|
+
 
